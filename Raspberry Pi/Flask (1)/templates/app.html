@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플라스크서버</title>
+    <style>
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h3>라즈베리파이 GPIO의 LED ON / OFF</h3>
+    <div class="flex">
+        <!--  파이썬코드  -->
+        {% for pin in pins %}
+        <div>{{ pins[pin]['name'] }}</div>
+        {% if pins[pin]['state']==1 %}
+            <button><a href="/{{pin}}/off">ON</a></button>
+        {% else %}
+            <button><a href="/{{pin}}/on">OFF</a></button>
+        {% endif %}
+        <!-- if문 끝 -->
+        {% endfor %}  
+        <!-- for문 끝 -->
+    </div>
+    <h3>Sensor</h3>
+    <h3><button><a href="/test">check!</a></button><h3>
+    <div>온도: {{ bmp['temp'] }}</div>
+    <div>압력: {{ bmp['pressure'] }}</div>
+</body>
+</html>
